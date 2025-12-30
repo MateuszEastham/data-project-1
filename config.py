@@ -1,6 +1,7 @@
-"""Configuration module - Step 1.
+"""Configuration module.
 
 Contains basic paths and constants for the project infrastructure.
+Adds Pandas configuration and data processing flags.
 """
 from pathlib import Path
 import pandas as pd
