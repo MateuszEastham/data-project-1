@@ -1,9 +1,10 @@
 import pandas as pd
 import numpy as np
+from pathlib import Path
 
 # REPLACE THIS with your actual file path
 # Use a raw string (r"...") so backslashes are not treated as escapes
-file_path = r"C:\Users\mateu\GitHub\data-project-1\BMW-sales-data-2010-2024.csv"
+file_path = Path(__file__).resolve().parent / "BMW-sales-data-2010-2024.csv"
 
 try:
     # Load the dataset
