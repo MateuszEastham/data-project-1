@@ -2,7 +2,8 @@ import pandas as pd
 import numpy as np
 
 # REPLACE THIS with your actual file path
-file_path = C:\Users\mateu\Downloads\BMW sales data (2010-2024) (1) (1).csv
+# Use a raw string (r"...") so backslashes are not treated as escapes
+file_path = r"C:\Users\mateu\GitHub\data-project-1\BMW-sales-data-2010-2024.csv"
 
 try:
     # Load the dataset
