@@ -3,6 +3,7 @@
 Contains basic paths and constants for the project infrastructure.
 """
 from pathlib import Path
+import pandas as pd
 
 # --- Paths ---
 PROJECT_ROOT = Path(__file__).resolve().parent
@@ -12,7 +13,13 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 def out_path(name: str) -> str:
     return str(OUTPUT_DIR / name)
 
+# --- Data Configuration ---
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_rows', 100)
+
 # --- Data Constants ---
 DATA_CSV_URL = 'https://raw.githubusercontent.com/StephenEastham/bmw-sales-forecast/refs/heads/main/v251125/BMW-sales-data-2010-2024.csv'
 DATA_CSV_FILE = 'BMW-sales-data-2010-2024.csv'
 
+# --- Feature Flags ---
+ENABLE_DATA_PROCESSING = True
