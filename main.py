@@ -1,33 +1,39 @@
-"""Main execution script - Step 2.
+"""Main execution script.
 
-This step adds the Data Module. We verify that we can download,
-load, and preprocess the data using the infrastructure from Step 1.
+This step adds the Analysis Module. We verify that we can perform
+time series aggregation and statistical analysis on the loaded data.
 """
-from config import DATA_CSV_FILE, ENABLE_DATA_PROCESSING
+from config import DATA_CSV_FILE, ENABLE_DATA_PROCESSING, ENABLE_TIME_SERIES, ENABLE_EXPLORATORY_ANALYSIS
 from utils import clean_outputs, print_section
 import data
+import analysis
 
-def test_data_module():
-    print_section("STEP 2: DATA MODULE TEST")
+def test_analysis_module():
+    print_section('ANALYSIS MODULE TEST')
     
     clean_outputs()
     
+ # 1. Load Data (Reusing Step 2)
     if ENABLE_DATA_PROCESSING:
-        # 1. Download
-        print("\nTesting data download...")
         data.download_required_files()
-        
-        # 2. Load
-        print("\nTesting data loading...")
         df = data.load_and_explore_data(DATA_CSV_FILE)
-        
-        # 3. Preprocess
-        print("\nTesting data preprocessing...")
         df_clean = data.preprocess_data(df)
         
-        print(f"\n✅ Step 2 Complete: Data loaded and cleaned. Shape: {df_clean.shape}")
-        return df_clean
+        # 2. Run Exploratory Analysis
+        if ENABLE_EXPLORATORY_ANALYSIS:
+            analysis.exploratory_data_analysis(df_clean)
+
+        # 3. Run Time Series Analysis
+        if ENABLE_TIME_SERIES:
+            print("\nTesting time series aggregation...")
+            results = analysis.aggregate_time_series(df_clean)
+            df_yearly, ts_data, ts_years, df_model_yearly, df_region_yearly = results
+            
+            print(f"\n✅ Step 3 Complete: Analysis finished.")
+            print(f"   Yearly Data Shape: {df_yearly.shape}")
+            print(f"   Time Series Points: {len(ts_data)}")
+            return results
 
 if __name__ == "__main__":
-    test_data_module()
+    test_analysis_module()
 
