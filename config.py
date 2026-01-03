@@ -2,6 +2,7 @@
 
 Contains basic paths and constants for the project infrastructure.
 Adds Pandas configuration and data processing flags.
+Adds Analysis flags.
 """
 from pathlib import Path
 import pandas as pd
@@ -19,8 +20,11 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', 100)
 
 # --- Data Constants ---
-DATA_CSV_URL = 'https://raw.githubusercontent.com/StephenEastham/bmw-sales-forecast/refs/heads/main/v251125/BMW-sales-data-2010-2024.csv'
+# DATA_CSV_URL = 'https://raw.githubusercontent.com/StephenEastham/bmw-sales-forecast/refs/heads/main/v251125/BMW-sales-data-2010-2024.csv'
+DATA_CSV_URL = 'https://raw.githubusercontent.com/MateuszEastham/data-project-1/refs/heads/main/BMW-sales-data-2010-2024.csv'
 DATA_CSV_FILE = 'BMW-sales-data-2010-2024.csv'
 
 # --- Feature Flags ---
 ENABLE_DATA_PROCESSING = True
+ENABLE_EXPLORATORY_ANALYSIS = True
+ENABLE_TIME_SERIES = True
