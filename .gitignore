@@ -4,3 +4,10 @@ __pycache__/data.cpython-313.pyc
 __pycache__/utils.cpython-313.pyc
 outputs/all_outputs.zip
 outputs/test_infrastructure.txt
+__pycache__/config.cpython-313.pyc
+__pycache__/config.cpython-313.pyc
+__pycache__/visualization.cpython-313.pyc
+outputs/01_sales_overview.png
+outputs/02_model_region_heatmap.png
+outputs/05_interactive_dashboard.html
+outputs/06_model_heatmap_interactive.html
