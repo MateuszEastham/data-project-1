@@ -26,11 +26,7 @@ def generate_monthly_report(df_clean, average_sales):
     for region, sales in by_region.items():
         pct = (sales / by_region.sum() * 100)
         report += f'   • {region}: {sales:,.0f} ({pct:.1f}%)\n'
-    report += '\n7. RECOMMENDATIONS\n' + ('-'*80) + '\n'
-    report += '   • Monitor underperforming models closely\n'
-    report += '   • Invest in high-growth regions\n'
-    report += '   • Adjust inventory based on demand signals\n'
-    report += '   • Review market conditions quarterly\n\n'
+    # Recommendations section removed per request
     report += ('='*80) + '\nEND OF REPORT\n' + ('='*80) + '\n'
     return report
 

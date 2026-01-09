@@ -3,13 +3,16 @@
 This step adds the Analysis Module. We verify that we can perform
 time series aggregation and statistical analysis on the loaded data.
 """
+import numpy as np
+from datetime import datetime
 from config import( DATA_CSV_FILE, ENABLE_DATA_PROCESSING, ENABLE_TIME_SERIES, 
-ENABLE_EXPLORATORY_ANALYSIS, ENABLE_STATIC_PLOTS, ENABLE_DASHBOARDS)
+ENABLE_STATIC_PLOTS, ENABLE_DASHBOARDS, ENABLE_REPORTING, out_path)
 
 from utils import clean_outputs, print_section
 import data
 import analysis
 import visualization
+import reporting 
 
 def test_analysis_module():
     print_section('VISUALIATION MODULE TEST')
@@ -37,7 +40,31 @@ def test_analysis_module():
             visualization.create_interactive_dashboard(ts_years, ts_data, df_yearly, df_clean)
             visualization.create_heatmap_interactive(df_model_yearly)
             
-        print(f"\n✅ Step 4 Complete: Visualizations generated in 'outputs' directory.")
+          # 3. Reporting
+        if ENABLE_REPORTING:
+            print("\nTesting reporting module...")
+            
+            # Ensure we have necessary data or defaults
+            average_sales = df_yearly['Total_Sales'].mean() if df_yearly is not None else 0
+
+            # Create monthly report
+            monthly_report = reporting.generate_monthly_report(df_clean, average_sales)
+            print(monthly_report)
+
+            report_filename = out_path(f"sales_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt")
+            with open(report_filename, 'w', encoding='utf-8') as f:
+                f.write(monthly_report)
+            print(f"\n✅ Saved: {report_filename}")
+            
+            # Create final summary
+            if ts_data is None:
+                ts_data = np.array([0, 0])
+            if ts_years is None:
+                ts_years = np.array([2020, 2021])
+
+            reporting.generate_final_summary(df_clean, average_sales, ts_years, ts_data)
+            
+        print(f"\n✅ Step 5 Complete: Reports generated in 'outputs' directory.")
 
 if __name__ == "__main__":
     test_analysis_module()
