@@ -11,3 +11,7 @@ outputs/01_sales_overview.png
 outputs/02_model_region_heatmap.png
 outputs/05_interactive_dashboard.html
 outputs/06_model_heatmap_interactive.html
+outputs/sales_report_20260109_135346.txt
+outputs/ANALYSIS_SUMMARY.txt
+__pycache__/config.cpython-313.pyc
+__pycache__/reporting.cpython-313.pyc

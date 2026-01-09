@@ -3,6 +3,7 @@
 Contains basic paths and constants for the project infrastructure.
 Adds Pandas configuration and data processing flags.
 Adds Analysis flags.
+Adds reporting flags.
 """
 from pathlib import Path
 import warnings
@@ -38,3 +39,4 @@ ENABLE_EXPLORATORY_ANALYSIS = True
 ENABLE_TIME_SERIES = True
 ENABLE_STATIC_PLOTS = True
 ENABLE_DASHBOARDS = True
+ENABLE_REPORTING = True
